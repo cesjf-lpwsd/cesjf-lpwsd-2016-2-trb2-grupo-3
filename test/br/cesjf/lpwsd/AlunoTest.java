@@ -1,4 +1,3 @@
-
 package br.cesjf.lpwsd;
 
 import java.util.List;
@@ -55,6 +54,14 @@ public class AlunoTest {
         Aluno instance = new Aluno();
 
         List<Mensalidade> result = instance.getMensalidades();
+        assertEquals(0, result.size());
+    }
+    
+    @Test
+    public void testGetAtividades() {
+        System.out.println("getAtividades");
+        Aluno instance = new Aluno();
+        List<Atividade> result = instance.getAtividades();
         assertEquals(0, result.size());
     }
     

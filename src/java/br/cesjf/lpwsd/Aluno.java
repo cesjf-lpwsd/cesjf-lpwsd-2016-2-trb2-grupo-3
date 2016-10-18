@@ -6,9 +6,11 @@ import java.util.List;
 public class Aluno {
     private String nome;
     private List<Mensalidade> mensalidades;
+    private List<Atividade> atividades;
 
     public Aluno() {
         this.mensalidades = new ArrayList<>();
+        this.atividades = new ArrayList<>();
     }
 
     public String getNome() {
@@ -21,5 +23,9 @@ public class Aluno {
 
     List<Mensalidade> getMensalidades() {
         return this.mensalidades;
+    }
+
+    List<Atividade> getAtividades() {
+        return this.atividades;
     }
 }
