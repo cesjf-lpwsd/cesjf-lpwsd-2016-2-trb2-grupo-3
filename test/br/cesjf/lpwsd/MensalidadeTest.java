@@ -38,8 +38,6 @@ public class MensalidadeTest {
         Long expResult = null;
         Long result = instance.getValor();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -48,11 +46,10 @@ public class MensalidadeTest {
     @Test
     public void testSetValor() {
         System.out.println("setValor");
-        Long valor = null;
+        Long valor = new Long(0);
         Mensalidade instance = new Mensalidade();
         instance.setValor(valor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(new Long(0), instance.getValor());
     }
     
 }

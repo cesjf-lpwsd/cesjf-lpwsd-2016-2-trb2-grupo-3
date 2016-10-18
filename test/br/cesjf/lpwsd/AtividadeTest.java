@@ -35,11 +35,9 @@ public class AtividadeTest {
     public void testGetNome() {
         System.out.println("getNome");
         Atividade instance = new Atividade();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getNome();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -48,11 +46,10 @@ public class AtividadeTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nome = "";
+        String nome = "Musculação";
         Atividade instance = new Atividade();
         instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("Musculação", instance.getNome());
     }
     
 }
