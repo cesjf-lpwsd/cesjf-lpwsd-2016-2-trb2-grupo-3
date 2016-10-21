@@ -52,4 +52,13 @@ public class MensalidadeTest {
         assertEquals(new Long(0), instance.getValor());
     }
     
+    @Test
+    public void testgetCodAluno() {
+        System.out.println("getCodAluno");
+        int[] codAluno = new int [10];
+        Mensalidade instance = new Mensalidade();
+        instance.getCodAluno();
+        assertEquals(new int[10], instance.getCodAluno());
+    }
+    
 }
