@@ -3,9 +3,9 @@ package br.cesjf.lpwsd;
 
 class Mensalidade {
     private int codigo;
-    private int codAluno;
+    private Aluno codAluno;
     private Long valor;
-    private boolean primeira;
+    private boolean manutencao;
     private boolean quitada;
     
 
@@ -28,20 +28,20 @@ class Mensalidade {
         this.codigo = codigo;
     }
 
-    public int getCodAluno() {
+    public Aluno getCodAluno() {
         return codAluno;
     }
 
-    public void setCodAluno(int codAluno) {
+    public void setCodAluno(Aluno codAluno) {
         this.codAluno = codAluno;
     }
 
-    public boolean isPrimeira() {
-        return primeira;
+    public boolean isManutencao() {
+        return manutencao;
     }
 
-    public void setPrimeira(boolean primeira) {
-        this.primeira = primeira;
+    public void setManutencao(boolean manutencao) {
+        this.manutencao = manutencao;
     }
 
     public boolean isQuitada() {
