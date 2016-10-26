@@ -69,11 +69,11 @@ public class AlunoTest {
     public void testGerarPrimeiraMensalidade() {
         System.out.println("primeiraMensalidade");
         Mensalidade mensalidade = new Mensalidade();
-        mensalidade.setValor(new Long(100));
+        mensalidade.setValor(100.0f);
         Aluno aluno = new Aluno();
         List<Atividade> atividades = aluno.getAtividades();
         if (aluno.isPrimeiraMensalidade()) {
-            mensalidade.setValor(mensalidade.getValor()* new Long(1));
+            mensalidade.setValor(mensalidade.getValor()* 1.5f);
         }
         aluno.getMensalidades().add(mensalidade);
         
