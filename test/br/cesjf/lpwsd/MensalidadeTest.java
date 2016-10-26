@@ -53,12 +53,12 @@ public class MensalidadeTest {
     }
     
     @Test
-    public void testgetCodAluno() {
+    public void testGetCodAluno() {
         System.out.println("getCodAluno");
-        int[] codAluno = new int [10];
+        Aluno aluno = new Aluno ();
         Mensalidade instance = new Mensalidade();
-        instance.getCodAluno();
-        assertEquals(new int[10], instance.getCodAluno());
+        //Aluno expResult = aluno.getNome()
+        assertEquals(new Aluno(), instance.getCodAluno());
     }
     
 }
