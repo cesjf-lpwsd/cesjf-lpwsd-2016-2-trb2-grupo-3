@@ -65,4 +65,19 @@ public class AlunoTest {
         assertEquals(0, result.size());
     }
     
+     @Test
+    public void testGerarPrimeiraMensalidade() {
+        System.out.println("primeiraMensalidade");
+        Mensalidade mensalidade = new Mensalidade();
+        mensalidade.setValor(new Long(100));
+        Aluno aluno = new Aluno();
+        List<Atividade> atividades = aluno.getAtividades();
+        if (aluno.isPrimeiraMensalidade()) {
+            mensalidade.setValor(mensalidade.getValor()* new Long(1));
+        }
+        aluno.getMensalidades().add(mensalidade);
+        
+        assertEquals(0, atividades.size());
+    }
+    
 }
