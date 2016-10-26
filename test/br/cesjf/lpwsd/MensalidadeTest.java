@@ -35,8 +35,8 @@ public class MensalidadeTest {
     public void testGetValor() {
         System.out.println("getValor");
         Mensalidade instance = new Mensalidade();
-        Long expResult = null;
-        Long result = instance.getValor();
+        Float expResult = null;
+        Float result = instance.getValor();
         assertEquals(expResult, result);
     }
 
@@ -46,10 +46,10 @@ public class MensalidadeTest {
     @Test
     public void testSetValor() {
         System.out.println("setValor");
-        Long valor = new Long(0);
+        Float valor = new Float(0);
         Mensalidade instance = new Mensalidade();
         instance.setValor(valor);
-        assertEquals(new Long(0), instance.getValor());
+        assertEquals(new Float(0), instance.getValor());
     }
     
     @Test

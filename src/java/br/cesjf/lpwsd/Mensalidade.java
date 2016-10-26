@@ -4,7 +4,7 @@ package br.cesjf.lpwsd;
 class Mensalidade {
     private int codigo;
     private Aluno codAluno;
-    private Long valor;
+    private Float valor;
     private boolean manutencao;
     private boolean quitada;
     
@@ -12,11 +12,11 @@ class Mensalidade {
     public Mensalidade() {
     }
 
-    public Long getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(Long valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 
