@@ -55,10 +55,11 @@ public class MensalidadeTest {
     @Test
     public void testGetCodAluno() {
         System.out.println("getCodAluno");
-        Aluno aluno = new Aluno ();
-        Mensalidade instance = new Mensalidade();
-        //Aluno expResult = aluno.getNome()
-        assertEquals(new Aluno(), instance.getCodAluno());
+        Mensalidade mensalidade = new Mensalidade();
+        Aluno aluno = new Aluno();
+//        mensalidade.setCodAluno(aluno.setCodigo());
+//        mensalidade.getCodAluno(aluno.getCodigo());
+        assertEquals(mensalidade.getCodigo(), mensalidade.getCodAluno());
     }
     
 }
