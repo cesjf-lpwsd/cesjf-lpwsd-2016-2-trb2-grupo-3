@@ -28,9 +28,6 @@ public class AtividadeTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getNome method, of class Atividade.
-     */
     @Test
     public void testGetNome() {
         System.out.println("getNome");
@@ -40,9 +37,6 @@ public class AtividadeTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of setNome method, of class Atividade.
-     */
     @Test
     public void testSetNome() {
         System.out.println("setNome");
@@ -51,5 +45,24 @@ public class AtividadeTest {
         instance.setNome(nome);
         assertEquals("Musculação", instance.getNome());
     }
+    
+        @Test
+    public void testGetValor() {
+        System.out.println("getValor");
+        Atividade instance = new Atividade();
+        float expResult = (float) 0;
+        float result = instance.getValor();
+            assertEquals(expResult, result, 0);
+    }
+   
+        @Test
+    public void testGetCodAtividade() {
+        System.out.println("getAtividade");
+        Atividade atividade = new Atividade();
+    //  atividade.setCodigo(atividade.setCodigo());
+    //  atividade.getCodigo(atividade.getCodigo());
+        assertEquals(atividade.getCodigo(),atividade.getCodigo());
+    }
+    
     
 }
