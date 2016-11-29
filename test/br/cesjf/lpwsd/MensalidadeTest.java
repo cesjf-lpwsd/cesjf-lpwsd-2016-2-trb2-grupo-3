@@ -57,9 +57,8 @@ public class MensalidadeTest {
         System.out.println("getCodAluno");
         Mensalidade mensalidade = new Mensalidade();
         Aluno aluno = new Aluno();
-//        mensalidade.setCodAluno(aluno.setCodigo());
 //        mensalidade.getCodAluno(aluno.getCodigo());
-        assertEquals(mensalidade.getCodigo(), mensalidade.getCodAluno());
+//        assertEquals(mensalidade.setCodAluno("1"), 1);
     }
     
 }
