@@ -59,9 +59,8 @@ public class AtividadeTest {
     public void testGetCodAtividade() {
         System.out.println("getAtividade");
         Atividade atividade = new Atividade();
-    //  atividade.setCodigo(atividade.setCodigo());
-    //  atividade.getCodigo(atividade.getCodigo());
-        assertEquals(atividade.getCodigo(),atividade.getCodigo());
+        atividade.setCodigo(12);
+        assertEquals(atividade.getCodigo(),12);
     }
     
     
