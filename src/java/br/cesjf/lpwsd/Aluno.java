@@ -1,55 +1,91 @@
 package br.cesjf.lpwsd;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.ManyToMany;
+import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Aluno {
-    
-    private int codigo;
+@Entity
+public class Aluno implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
-    private List<Mensalidade> mensalidades;
-    @ManyToMany
-    private List<Atividade> atividades;
-
-    public Aluno() {
-        this.mensalidades = new ArrayList<>();
-        this.atividades = new ArrayList<>();
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+    private String cpf;
+    private boolean adimplente;
+    private double mensalidade;
     
     public String getNome() {
         return nome;
     }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    List<Mensalidade> getMensalidades() {
-        return this.mensalidades;
-    }
-
-    List<Atividade> getAtividades() {
-        return this.atividades;
+    
+    public String getCpf() {
+        return cpf;
     }
     
-    public void setMensalidades(List<Mensalidade> mensalidades) {
-        this.mensalidades = mensalidades;
-    }
-
-    public void setAtividades(List<Atividade> atividades) {
-        this.atividades = atividades;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
-    public boolean isPrimeiraMensalidade() {
-        return this.mensalidades.isEmpty() ? true : false;
+    public boolean isAdimplente() {
+        return adimplente;
     }
+    
+    public void setAdimplente(boolean adimplente) {
+        this.adimplente = adimplente;
+    }
+    
+    public double getMensalidade() {
+        return mensalidade;
+    }
+    
+    public void setMensalidade(double mensalidade) {
+        this.mensalidade = mensalidade*1.5;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

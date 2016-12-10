@@ -14,12 +14,11 @@
         </h:head>
 
         <h:body>
-            <h:form id="main">
-
+        <h:form>
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Pagina Inicial
+                    Criar Aluno
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -31,7 +30,21 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Aqui vem o texto de apresentação
+                    
+                        <p:messages id="messages" />
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="nome" value="Nome:" />
+                            <p:inputText id="nome" value="#{alunoController.aluno.nome}" />
+
+
+                            <p:outputLabel for="cpf" value="CPF:" />
+                            <p:inputText id="cpf" value="#{alunoController.aluno.cpf}" />
+
+                            <p:commandButton  value="Cadastrar" icon="ui-icon-star" action="#{alunoController.cadastrarAluno()}" update="messages">
+                            </p:commandButton>
+
+                        </p:panelGrid>
+                    
                 </p:layoutUnit>
 
             </p:layout>

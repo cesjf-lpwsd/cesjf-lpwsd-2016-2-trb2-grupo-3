@@ -14,12 +14,11 @@
         </h:head>
 
         <h:body>
-            <h:form id="main">
-
+            <h:form>
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Pagina Inicial
+                    Listar Alunos
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -31,7 +30,22 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Aqui vem o texto de apresentação
+                    <p:dataTable var="aluno" value="#{alunoController.alunos}" paginator="true" rows="10">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{aluno.id}" />
+                        </p:column>
+
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{aluno.nome}" />
+                        </p:column>
+
+                        <p:column headerText="CPF">
+                            <h:outputText value="#{aluno.cpf}" />
+                        </p:column>
+                        <p:column headerText="Ações">
+                            <h:commandButton value="Visualizar" actionListener="#{alunoController.visualizarAluno(aluno)}"/>
+                        </p:column>
+                    </p:dataTable>
                 </p:layoutUnit>
 
             </p:layout>

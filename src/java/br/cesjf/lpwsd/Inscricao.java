@@ -8,21 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Mensalidade implements Serializable {
+public class Inscricao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @OneToOne
+    private Long id;    
     private Aluno aluno;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataPagamento;
-    private double valor;
-    private boolean taxaManutencao;
-
+    private Atividade atividade;
+    @Temporal(value=TemporalType.TIMESTAMP)
+    private Date dataInscricao;
     
     public Aluno getAluno() {
         return aluno;
@@ -32,47 +29,52 @@ public class Mensalidade implements Serializable {
         this.aluno = aluno;
     }
     
-    public Date getDataPagamento() {
-        return dataPagamento;
+    public Atividade getAtividade() {
+        return atividade;
     }
     
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
     
-    public double getValor() {
-        return valor;
+    public Date getDataInscricao() {
+        return dataInscricao;
     }
     
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setDataInscricao(Date dataInscricao) {
+        this.dataInscricao = dataInscricao;
     }
     
-    public boolean isTaxaManutencao() {
-        return taxaManutencao;
+    public void atualizaMensalidade() {
+        aluno.setMensalidade(aluno.getMensalidade()+atividade.getValor());
     }
     
-    public void setTaxaManutencao(boolean taxaManutencao) {
-        this.taxaManutencao = taxaManutencao;
+    public double taxaMatricula(double valor) {
+        return valor*1.5;
     }
-    
-    public void atualizaAdimplencia() {
-        if (isTaxaManutencao()) {
-            aluno.setAdimplente(false);
-        }
+
+    static Inscricao matricula(Aluno aluno, Atividade atividade) {
+        if(atividade.getAberta()==true) {
+            if(aluno.isAdimplente()==true){
+                Inscricao inscricao = new Inscricao();
+                inscricao.setAluno(aluno);
+                inscricao.setAtividade(atividade);
+                return inscricao;
+            } else return null;
+        } else return null;
     }
-    
+
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
@@ -88,12 +90,10 @@ public class Mensalidade implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Mensalidade other = (Mensalidade) obj;
+        final Inscricao other = (Inscricao) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
-    }
-    
-    
+    }   
 }

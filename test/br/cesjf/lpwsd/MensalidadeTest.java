@@ -27,39 +27,51 @@ public class MensalidadeTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of getValor method, of class Mensalidade.
-     */
+    
+    @Test
+    public void testGetAluno() {
+        System.out.println("Teste get Aluno");
+        Mensalidade pagamento = new Mensalidade();
+        assertEquals(null,pagamento.getAluno());
+    }
+    
+    @Test
+    public void testSetAluno() {
+        System.out.println("Teste set Aluno");
+        Mensalidade pagamento = new Mensalidade();
+        pagamento.setAluno(null);
+        assertEquals(null,pagamento.getAluno());
+    }
+    
+    @Test
+    public void testGetDataPagamento() {
+        System.out.println("Teste get Data Pagamento");
+        Mensalidade pagamento = new Mensalidade();
+        assertEquals(null,pagamento.getDataPagamento());
+    }
+    
+    @Test
+    public void testSetDataPagamento() {
+        System.out.println("Teste set data pagamento");
+        Mensalidade pagamento = new Mensalidade();
+        pagamento.setDataPagamento(null);
+        assertEquals(null,pagamento.getDataPagamento());
+    }
+    
     @Test
     public void testGetValor() {
-        System.out.println("getValor");
-        Mensalidade instance = new Mensalidade();
-        Float expResult = null;
-        Float result = instance.getValor();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setValor method, of class Mensalidade.
-     */
-    @Test
-    public void testSetValor() {
-        System.out.println("setValor");
-        Float valor = new Float(0);
-        Mensalidade instance = new Mensalidade();
-        instance.setValor(valor);
-        assertEquals(new Float(0), instance.getValor());
+        System.out.println("Teste get Valor");
+        Mensalidade pagamento = new Mensalidade();
+        double test = 0.0;
+        assertEquals(test,test,pagamento.getValor());
     }
     
-    @Test
-    public void testGetCodAluno() {
-        System.out.println("getCodAluno");
-        Mensalidade mensalidade = new Mensalidade();
-        Aluno aluno = new Aluno();
-        aluno.setCodigo(12);
-        mensalidade.setCodAluno(aluno);
-        assertEquals(mensalidade.getCodAluno().getCodigo(), 12);
+    @Test 
+    public void testSetValor(){
+        System.out.println("Teste set valor");
+        Mensalidade pagamento = new Mensalidade();
+        pagamento.setValor(120.0);
+        double test = 120.0;
+        assertEquals(test,test,pagamento.getValor());
     }
-    
 }

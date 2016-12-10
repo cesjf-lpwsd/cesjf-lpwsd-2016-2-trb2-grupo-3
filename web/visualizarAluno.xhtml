@@ -14,12 +14,11 @@
         </h:head>
 
         <h:body>
-            <h:form id="main">
-
+        <h:form>
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Pagina Inicial
+                    Criar Aluno
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -31,7 +30,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Aqui vem o texto de apresentação
+                    <p:outputLabel value="Nome: "/> <p:outputLabel value="#{alunoController.aluno.nome} "/>
                 </p:layoutUnit>
 
             </p:layout>

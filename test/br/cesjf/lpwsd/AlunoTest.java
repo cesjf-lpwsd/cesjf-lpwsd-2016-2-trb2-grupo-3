@@ -1,6 +1,5 @@
 package br.cesjf.lpwsd;
 
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,56 +27,101 @@ public class AlunoTest {
     @After
     public void tearDown() {
     }
-
+    
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        Aluno instance = new Aluno();
-        String expResult = null;
-        String result = instance.getNome();
-        assertEquals(expResult, result);
+        Aluno aluno = new Aluno();
+        assertEquals(null, aluno.getNome());
     }
-
-
+    
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nome = "Fulano";
-        Aluno instance = new Aluno();
-        instance.setNome(nome);
-        assertEquals("Fulano", instance.getNome());
-    }
-    
-    @Test
-    public void testGetMensalidades() {
-        System.out.println("getMensalidades");
-        Aluno instance = new Aluno();
-
-        List<Mensalidade> result = instance.getMensalidades();
-        assertEquals(0, result.size());
-    }
-    
-    @Test
-    public void testGetAtividades() {
-        System.out.println("getAtividades");
-        Aluno instance = new Aluno();
-        List<Atividade> result = instance.getAtividades();
-        assertEquals(0, result.size());
-    }
-    
-     @Test
-    public void testGerarPrimeiraMensalidade() {
-        System.out.println("primeiraMensalidade");
-        Mensalidade mensalidade = new Mensalidade();
-        mensalidade.setValor(100.0f);
         Aluno aluno = new Aluno();
-        List<Atividade> atividades = aluno.getAtividades();
-        if (aluno.isPrimeiraMensalidade()) {
-            mensalidade.setValor(mensalidade.getValor()* 1.5f);
-        }
-        aluno.getMensalidades().add(mensalidade);
-        
-        assertEquals(0, atividades.size());
+        aluno.setNome("Teste");
+        assertEquals("Teste", aluno.getNome());
     }
     
+    @Test
+    public void testIsAdimplente() {
+        System.out.println("isAdimplente");
+        Aluno aluno = new Aluno();
+        assertEquals(false, aluno.isAdimplente());
+    }
+    
+    @Test
+    public void testSetAdimplente() {
+        System.out.println("setAdimplente");
+        Aluno aluno = new Aluno();
+        aluno.setAdimplente(true);
+        assertEquals(true, aluno.isAdimplente());
+    }
+    
+    @Test
+    public void testGetCpf() {
+        System.out.println("getCpf");
+        Aluno aluno = new Aluno();
+        assertEquals(null,aluno.getCpf());
+    }
+    
+    @Test
+    public void testSetCpf() {
+        System.out.println("setCpf");
+        Aluno aluno = new Aluno();
+        aluno.setCpf("CPF");
+        assertEquals("CPF",aluno.getCpf());
+    }
+    
+    @Test
+    public void testGetMensalidade() {
+        System.out.println("getMensalidade");
+        Aluno aluno = new Aluno();
+        double teste = 10.0;
+        assertEquals(teste,teste,aluno.getMensalidade());
+    }
+    
+    @Test
+    public void testSetMensalidade() {
+        System.out.println("getMensalidade");
+        Aluno aluno = new Aluno();
+        aluno.setMensalidade(170.0);
+        double teste = 120.0;
+        assertEquals(teste,teste,aluno.getMensalidade());
+    }
+    
+    @Test
+    public void testeMatriculaAluno() {
+        System.out.println("testanto matricula do aluno");
+        Aluno aluno = new Aluno();
+        Atividade atividade = new Atividade();
+        atividade.setAberta(true);
+        aluno.setAdimplente(true);
+        Inscricao inscricao = Inscricao.matricula(aluno,atividade);        
+        assertEquals(atividade, inscricao.getAtividade());
+        assertEquals(aluno, inscricao.getAluno());
+    }
+    
+    @Test
+    //Matricula fechada, não deve permitir inclusão de usuario.
+    public void testeMatriculaAlunoAtividadeFechada() {
+        System.out.println("Teste Matricula Aluno Atividade Fechada");
+        Aluno aluno = new Aluno();
+        Atividade atividade = new Atividade();
+        atividade.setAberta(false);
+        Inscricao inscricao = Inscricao.matricula(aluno,atividade);  
+        assertNull(inscricao);
+    }
+    
+    @Test
+    //Aluno inadiplente, não permite matricula.
+    public void testeMatriculaAlunoInadiplente() {
+        System.out.println("Teste Matricula Aluno Inadiplente");
+        Aluno aluno = new Aluno();
+        Atividade atividade = new Atividade();
+        atividade.setAberta(true);
+        aluno.setAdimplente(false);
+        Inscricao inscricao = Inscricao.matricula(aluno,atividade); 
+        assertNull(inscricao);
+    }    
 }
