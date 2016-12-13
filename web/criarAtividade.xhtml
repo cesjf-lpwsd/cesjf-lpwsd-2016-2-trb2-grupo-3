@@ -41,8 +41,8 @@
                             
                             <p:outputLabel for="valor" value="Aberta:" />
                             <h:selectOneRadio id="myRadio" value="#{atividadeController.atividade.aberta}" >
-                                <f:selectItem itemValue="1" itemLabel="Sim"/>
-                                <f:selectItem itemValue="0" itemLabel="Não"/>
+                                <f:selectItem itemValue="#{true}" itemLabel="Sim"/>
+                                <f:selectItem itemValue="#{false}" itemLabel="Não"/>
                             </h:selectOneRadio>
 
                             <p:commandButton  value="Cadastrar" icon="ui-icon-star" action="#{atividadeController.cadastrarAtividade()}" update="messages">
