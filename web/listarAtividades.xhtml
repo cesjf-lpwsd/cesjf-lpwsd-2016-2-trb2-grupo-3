@@ -30,11 +30,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <p:dataTable var="atividade" value="#{atividadeController.atividades}" paginator="true" rows="10">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{atividade.id}" />
-                        </p:column>
-
+                    <p:dataTable var="atividade" value="#{atividadeController.atividadesTO}" paginator="true" rows="10">
                         <p:column headerText="Descrição">
                             <h:outputText value="#{atividade.descricao}" />
                         </p:column>

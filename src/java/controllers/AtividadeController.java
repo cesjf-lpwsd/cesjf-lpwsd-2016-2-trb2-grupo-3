@@ -1,9 +1,7 @@
 package controllers;
 
-import br.cesjf.lpwsd.Aluno;
+import br.ces.lpwsd.TO.AtividadeTO;
 import br.cesjf.lpwsd.Atividade;
-import static br.cesjf.lpwsd.Inscricao_.aluno;
-import br.cesjf.lpwsd.service.AlunoService;
 import br.cesjf.lpwsd.service.AtividadeService;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +27,7 @@ public class AtividadeController {
 
     private Atividade atividade = new Atividade();
     private List<Atividade> atividades = new ArrayList<>();
+    private List<AtividadeTO> atividadesTO = new ArrayList<>();
     
     @PostConstruct
     public void init(){
@@ -46,6 +45,14 @@ public class AtividadeController {
     public String listarAtividades(){
         AtividadeService service = new AtividadeService();
         setAtividades(service.listarAtividades(ut, emf));
+        for (Atividade ativ : atividades) {
+            AtividadeTO atividadeTO = new AtividadeTO();
+            atividadeTO.setDescricao(ativ.getDescricao());
+            atividadeTO.setValor("R$" + ativ.getValor());
+            if (ativ.getAberta()) atividadeTO.setAberta("Aberta");
+            else atividadeTO.setAberta("Fechada");
+            getAtividadesTO().add(atividadeTO);            
+        }
         return "listarAtividades.xhtml";
     }
     
@@ -68,6 +75,14 @@ public class AtividadeController {
 
     public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
+    }
+
+    public List<AtividadeTO> getAtividadesTO() {
+        return atividadesTO;
+    }
+
+    public void setAtividadesTO(List<AtividadeTO> atividadesTO) {
+        this.atividadesTO = atividadesTO;
     }
 
 }
