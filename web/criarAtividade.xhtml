@@ -14,27 +14,45 @@
         </h:head>
 
         <h:body>
+            <h:form>
+                <p:layout fullPage="true">
 
-            <p:layout fullPage="true">
+                    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                        Criar Atividade
+                    </p:layoutUnit>
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Criar Atividade
-                </p:layoutUnit>
+                    <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                        Todos os direitos reservados.
+                    </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Todos os direitos reservados.
-                </p:layoutUnit>
+                    <p:layoutUnit position="west" size="250" header="Esconder" collapsible="true">
+                        <ui:include src="templates/menu.xhtml"></ui:include>
+                    </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="250" header="Esconder" collapsible="true">
-                    <ui:include src="templates/menu.xhtml"></ui:include>
-                </p:layoutUnit>
+                    <p:layoutUnit position="center">
+                        <p:messages id="messages" />
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="nomeAtividade" value="Nome Atividade:" />
+                            <p:inputText id="nomeAtividade" value="#{atividadeController.atividade.descricao}" />
 
-                <p:layoutUnit position="center">
-                    Criar Atividade
-                </p:layoutUnit>
 
-            </p:layout>
+                            <p:outputLabel for="valor" value="Valor:" />
+                            <p:inputText id="valor" value="#{atividadeController.atividade.valor}" />
+                            
+                            <p:outputLabel for="valor" value="Aberta:" />
+                            <h:selectOneRadio id="myRadio" value="#{atividadeController.atividade.aberta}" >
+                                <f:selectItem itemValue="1" itemLabel="Sim"/>
+                                <f:selectItem itemValue="0" itemLabel="Não"/>
+                            </h:selectOneRadio>
 
+                            <p:commandButton  value="Cadastrar" icon="ui-icon-star" action="#{atividadeController.cadastrarAtividade()}" update="messages">
+                            </p:commandButton>
+
+                        </p:panelGrid>
+                    </p:layoutUnit>
+
+                </p:layout>
+            </h:form>
         </h:body>
 
     </f:view>

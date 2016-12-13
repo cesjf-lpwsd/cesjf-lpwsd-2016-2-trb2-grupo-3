@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package br.cesjf.lpwsd.dao;
 
@@ -23,9 +18,9 @@ import javax.transaction.UserTransaction;
  *
  * @author AndersonClemente
  */
-public class AtividadeJpaController implements Serializable {
+public class AtividadeDao implements Serializable {
 
-    public AtividadeJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public AtividadeDao(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
     }
